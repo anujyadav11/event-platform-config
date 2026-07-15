@@ -33,7 +33,7 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
-        spring.json.trusted.packages: "*"
+        spring.json.trusted.packages: com.example.eventstream.common
 
 resilience4j:
   circuitbreaker:
@@ -58,7 +58,7 @@ resilience4j:
         timeoutDuration: 3s
 
 pricing-service:
-  base-url: http://localhost:8089
+  base-url: ${PRICING_SERVICE_URL:http://localhost:8089}
 
 logging:
   level:

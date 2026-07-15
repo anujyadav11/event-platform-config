@@ -11,7 +11,7 @@ eureka:
 management:
   tracing:
     sampling:
-      probability: 1.0
+      probability: ${TRACING_SAMPLING_PROBABILITY:0.1}
 
   zipkin:
     tracing:
@@ -24,4 +24,4 @@ management:
 
   endpoint:
     health:
-      show-details: always
+      show-details: when_authorized

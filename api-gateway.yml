@@ -7,6 +7,11 @@ spring:
       server:
         webflux:
           routes:
+            - id: auth-service
+              uri: ${AUTH_SERVICE_URL:lb://AUTH-SERVICE}
+              predicates:
+                - Path=/auth/**
+
             - id: order-service
               uri: ${ORDER_SERVICE_URL:lb://ORDER-SERVICE}
               predicates:
@@ -38,4 +43,4 @@ spring:
                 - Path=/api/orchestrator/**
 
 jwt:
-  secret: ${JWT_SECRET:MyVerySecretKeyForJwtAuthentication123456789}
+  secret: ${JWT_SECRET}
