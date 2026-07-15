@@ -13,3 +13,6 @@ has no fallback secret, so neither service can start with a known credential.
 
 For production, set `TRACING_SAMPLING_PROBABILITY` to the intended trace sample
 rate; the default is `0.1`.
+
+Set `JPA_SHOW_SQL=true` only while diagnosing database behaviour. SQL logging is
+disabled by default and open session in view is disabled for every JPA service.

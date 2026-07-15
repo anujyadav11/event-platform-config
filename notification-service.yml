@@ -8,6 +8,7 @@ spring:
     password: ${NOTIFICATION_DB_PASSWORD:postgres}
 
   jpa:
+    open-in-view: false
     hibernate:
       ddl-auto: validate
 
