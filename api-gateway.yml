@@ -22,25 +22,20 @@ spring:
               predicates:
                 - Path=/api/v1/inventory/**
 
-            - id: payment-service
-              uri: ${PAYMENT_SERVICE_URL:lb://PAYMENT-SERVICE}
+            - id: pricing-service
+              uri: ${PRICING_SERVICE_URL:lb://PRICING-SERVICE}
               predicates:
-                - Path=/api/payments/**
-
-            - id: notification-service
-              uri: ${NOTIFICATION_SERVICE_URL:lb://NOTIFICATION-SERVICE}
-              predicates:
-                - Path=/api/notifications/**
+                - Path=/api/pricing/**
 
             - id: delivery-service
               uri: ${DELIVERY_SERVICE_URL:lb://DELIVERY-SERVICE}
               predicates:
                 - Path=/api/v1/deliveries/**
 
-            - id: saga-orchestrator
-              uri: ${SAGA_ORCHESTRATOR_URL:lb://SAGA-ORCHESTRATOR}
+            - id: websocket-service
+              uri: ${WEBSOCKET_SERVICE_URL:lb://WEBSOCKET-SERVICE}
               predicates:
-                - Path=/api/orchestrator/**
+                - Path=/ws/**
 
 jwt:
   secret: ${JWT_SECRET}
