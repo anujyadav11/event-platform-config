@@ -1,13 +1,7 @@
 server:
-  port: ${SERVER_PORT:8081}
+  port: 8081
 
 spring:
-  application:
-    name: order-service
-
-  config:
-    import: "optional:configserver:${CONFIG_SERVER_URL:http://localhost:8888}"
-
   datasource:
     url: ${ORDER_DB_URL:jdbc:postgresql://localhost:5432/orders}
     username: ${ORDER_DB_USERNAME:postgres}
@@ -41,16 +35,6 @@ spring:
       properties:
         spring.json.trusted.packages: com.example.eventstream.common
 
-eureka:
-  client:
-    service-url:
-      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka}
-    register-with-eureka: true
-    fetch-registry: true
-
-  instance:
-    prefer-ip-address: true
-
 resilience4j:
   circuitbreaker:
     instances:
@@ -74,7 +58,7 @@ resilience4j:
         timeoutDuration: 3s
 
 pricing-service:
-  base-url: ${PRICING_SERVICE_URL:http://pricing-service-spring-boot-app:8089}
+  base-url: ${PRICING_SERVICE_URL:http://localhost:8089}
 
 logging:
   level:
@@ -85,8 +69,6 @@ management:
   endpoint:
     health:
       show-details: always
-      probes:
-        enabled: true
 
   endpoints:
     web:
@@ -95,10 +77,6 @@ management:
 
   health:
     circuitbreakers:
-      enabled: true
-    readinessstate:
-      enabled: true
-    livenessstate:
       enabled: true
 
   metrics:

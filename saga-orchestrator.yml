@@ -1,13 +1,7 @@
 server:
-  port: ${SERVER_PORT:8095}
+  port: 8095
 
 spring:
-  application:
-    name: saga-orchestrator
-
-  config:
-    import: "optional:configserver:${CONFIG_SERVER_URL:http://localhost:8888}"
-
   datasource:
     url: ${SAGA_DB_URL:jdbc:postgresql://localhost:5432/saga}
     username: ${SAGA_DB_USERNAME:postgres}
@@ -34,6 +28,7 @@ spring:
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+
       properties:
         spring.json.trusted.packages: com.example.eventstream.common
 
@@ -41,35 +36,3 @@ spring:
     redis:
       host: ${REDIS_HOST:localhost}
       port: ${REDIS_PORT:6379}
-
-eureka:
-  client:
-    service-url:
-      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka}
-    register-with-eureka: true
-    fetch-registry: true
-
-  instance:
-    prefer-ip-address: true
-
-management:
-  endpoint:
-    health:
-      show-details: always
-      probes:
-        enabled: true
-
-  endpoints:
-    web:
-      exposure:
-        include: health,info,prometheus
-
-  health:
-    readinessstate:
-      enabled: true
-    livenessstate:
-      enabled: true
-
-  metrics:
-    tags:
-      application: ${spring.application.name}
