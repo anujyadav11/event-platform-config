@@ -58,7 +58,7 @@ resilience4j:
         timeoutDuration: 3s
 
 pricing-service:
-  base-url: ${PRICING_SERVICE_URL:http://PRICING-SERVICE}
+  base-url: http://PRICING-SERVICE
 
 logging:
   level:
