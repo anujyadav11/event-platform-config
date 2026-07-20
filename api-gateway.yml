@@ -45,22 +45,4 @@ spring:
                 - Path=/ws/**
 
 jwt:
-  secret: ${JWT_SECRET:MyVerySecretKeyForJwtAuthentication123456789}
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,prometheus
-
-  endpoint:
-    health:
-      show-details: always
-      probes:
-        enabled: true
-
-  health:
-    livenessstate:
-      enabled: true
-    readinessstate:
-      enabled: true
+  secret: ${JWT_SECRET}

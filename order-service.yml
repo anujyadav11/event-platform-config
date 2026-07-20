@@ -66,15 +66,6 @@ logging:
     com.example.eventstream.order: DEBUG
 
 management:
-  endpoint:
-    health:
-      show-details: always
-
-  endpoints:
-    web:
-      exposure:
-        include: health,info,prometheus
-
   health:
     circuitbreakers:
       enabled: true
