@@ -44,5 +44,62 @@ spring:
               predicates:
                 - Path=/ws/**
 
+            - id: auth-service-openapi
+              uri: ${AUTH_SERVICE_URL:lb://AUTH-SERVICE}
+              predicates:
+                - Path=/auth-service/v3/api-docs,/auth-service/v3/api-docs/**
+              filters:
+                - StripPrefix=1
+
+            - id: order-service-openapi
+              uri: ${ORDER_SERVICE_URL:lb://ORDER-SERVICE}
+              predicates:
+                - Path=/order-service/v3/api-docs,/order-service/v3/api-docs/**
+              filters:
+                - StripPrefix=1
+
+            - id: inventory-service-openapi
+              uri: ${INVENTORY_SERVICE_URL:lb://INVENTORY-SERVICE}
+              predicates:
+                - Path=/inventory-service/v3/api-docs,/inventory-service/v3/api-docs/**
+              filters:
+                - StripPrefix=1
+
+            - id: pricing-service-openapi
+              uri: ${PRICING_SERVICE_URL:lb://PRICING-SERVICE}
+              predicates:
+                - Path=/pricing-service/v3/api-docs,/pricing-service/v3/api-docs/**
+              filters:
+                - StripPrefix=1
+
+            - id: delivery-service-openapi
+              uri: ${DELIVERY_SERVICE_URL:lb://DELIVERY-SERVICE}
+              predicates:
+                - Path=/delivery-service/v3/api-docs,/delivery-service/v3/api-docs/**
+              filters:
+                - StripPrefix=1
+
 jwt:
   secret: ${JWT_SECRET}
+
+springdoc:
+  api-docs:
+    enabled: true
+
+  swagger-ui:
+    path: /swagger-ui.html
+    disable-swagger-default-url: true
+    persist-authorization: true
+    operations-sorter: method
+    tags-sorter: alpha
+    urls:
+      - name: Auth Service
+        url: /auth-service/v3/api-docs
+      - name: Order Service
+        url: /order-service/v3/api-docs
+      - name: Inventory Service
+        url: /inventory-service/v3/api-docs
+      - name: Pricing Service
+        url: /pricing-service/v3/api-docs
+      - name: Delivery Service
+        url: /delivery-service/v3/api-docs
