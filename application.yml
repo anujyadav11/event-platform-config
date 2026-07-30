@@ -17,8 +17,9 @@ spring:
 
 management:
   tracing:
+    enabled: true
     sampling:
-      probability: ${TRACING_SAMPLING_PROBABILITY:0.1}
+      probability: ${TRACING_SAMPLING_PROBABILITY:1.0}
 
   zipkin:
     tracing:
@@ -27,7 +28,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,prometheus,metrics
+        include: health,info,prometheus,metrics,loggers
 
   endpoint:
     health:
