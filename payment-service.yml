@@ -7,6 +7,10 @@ spring:
     username: ${PAYMENT_DB_USERNAME:postgres}
     password: ${PAYMENT_DB_PASSWORD:postgres}
 
+  feature:
+    flags:
+      payment-v2: false
+
   jpa:
     open-in-view: false
     hibernate:

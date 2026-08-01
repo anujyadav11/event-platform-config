@@ -4,6 +4,10 @@ server:
 spring:
   cloud:
     gateway:
+      rate-limit:
+        replenish-rate: 10
+        burst-capacity: 20
+        requested-tokens: 1
       server:
         webflux:
           routes:
