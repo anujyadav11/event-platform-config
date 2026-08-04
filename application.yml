@@ -25,10 +25,14 @@ management:
     tracing:
       endpoint: ${ZIPKIN_ENDPOINT:http://localhost:9411/api/v2/spans}
 
+  security:
+    internal:
+      api-key: ${INTERNAL_API_KEY:my-super-secret-key}
+
   endpoints:
     web:
       exposure:
-        include: health,info,prometheus,metrics,loggers
+        include: health,info,prometheus,metrics,loggers,refresh
 
   endpoint:
     health:
