@@ -9,6 +9,7 @@ spring:
 
   cache:
     type: redis
+    ttl: 10m
 
 springdoc:
   api-docs:

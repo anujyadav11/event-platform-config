@@ -86,6 +86,12 @@ spring:
 jwt:
   secret: ${JWT_SECRET}
 
+security:
+  internal:
+    service-name: api-gateway
+    current-key: key-v2
+    previous-key: key-v1
+
 springdoc:
   api-docs:
     enabled: true
