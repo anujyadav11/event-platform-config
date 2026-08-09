@@ -22,15 +22,20 @@ spring:
 
   kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    listener:
+      concurrency : 3
 
     producer:
       acks: all
-      retries: 10
+      enable-idempotence: true
+      compression-type: lz4
+      batch-size: 32768
       properties:
-        enable.idempotence: true
-        max.in.flight.requests.per.connection: 5
+        linger.ms: 5
         delivery.timeout.ms: 120000
         request.timeout.ms: 30000
+        max.in.flight.requests.per.connection: 5
+
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       transaction-id-prefix: order-outbox-tx-

@@ -28,12 +28,18 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
     consumer:
+      order-created:
+        concurrency: 3
       group-id: inventory-group
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
         spring.json.trusted.packages: com.example.eventstream.common
+
+    logging:
+      level:
+        org.springframework.kafka: INFO
 
 springdoc:
   api-docs:
@@ -42,3 +48,4 @@ springdoc:
     path: /swagger-ui.html
     operations-sorter: method
     tags-sorter: alpha
+

@@ -11,6 +11,14 @@ spring:
     type: redis
     ttl: 10m
 
+    ttl-jitter: 60s
+
+    missing-ttl: 30s
+    lock:
+      ttl: 5s
+      retry-delay: 50ms
+      max-retries: 20
+
 springdoc:
   api-docs:
     path: /v3/api-docs
