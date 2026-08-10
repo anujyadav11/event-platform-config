@@ -19,6 +19,10 @@ spring:
       retry-delay: 50ms
       max-retries: 20
 
+  kafka:
+    topics:
+      price-updated: price-updated
+
 springdoc:
   api-docs:
     path: /v3/api-docs

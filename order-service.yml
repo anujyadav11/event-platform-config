@@ -24,6 +24,7 @@ spring:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
     listener:
       concurrency : 3
+      observation-enabled: true
 
     producer:
       acks: all
@@ -43,11 +44,18 @@ spring:
 
     consumer:
       group-id: order-group
+      enable-auto-commit: false
+      max-poll-records: 100
+      max-poll-interval-ms: 300000
       auto-offset-reset: earliest
+
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+
       properties:
         spring.json.trusted.packages: com.example.eventstream.common
+        fetch.min.bytes: 16384
+        fetch.max.wait.ms: 100
 
     outbox:
       publisher:
