@@ -53,7 +53,7 @@ spring:
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
 
       properties:
-        spring.json.trusted.packages: com.example.eventstream.common
+        spring.json.trusted.packages: com.example.eventstream.common.*
         fetch.min.bytes: 16384
         fetch.max.wait.ms: 100
 
