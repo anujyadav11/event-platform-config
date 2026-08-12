@@ -8,12 +8,6 @@ spring:
       port: ${REDIS_PORT:6379}
 
   cache:
-    type: redis
-    ttl: 10m
-
-    ttl-jitter: 60s
-
-    missing-ttl: 30s
     lock:
       ttl: 5s
       retry-delay: 50ms
