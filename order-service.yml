@@ -52,7 +52,10 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
-        spring.json.trusted.packages: "com.example.eventstream.common,com.example.eventstream.common.*"
+        spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
+        spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
+        spring.json.trusted.packages: "com.example.eventstream.common,com.example.eventstream.common.*,com.example.infrastructure.audit.model"
+
 
         fetch.min.bytes: 16384
         fetch.max.wait.ms: 100
